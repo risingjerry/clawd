@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1000px;height:620px;background:#0c1118;overflow:hidden;font-family:ui-monospace,Menlo,"SF Mono",monospace;color:#f4ead2}
+.stage{position:absolute;left:28px;top:24px;width:700px;height:525px;background:#0f1620;border:2px solid #2a3644;border-radius:10px;overflow:hidden}
+.L{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.L img{display:block}
+.hero{width:525px;height:525px;background:url(../assets/clawd-hero.png) -740px -50px/1440px 960px;transform-origin:0 0}
+.herobox{width:525px;height:525px;overflow:hidden;position:relative}
+.herobox div{position:absolute;left:0;top:0;width:650px;height:650px;background:url(../assets/clawd-hero.png) -740px -50px no-repeat;transform:scale(.8077);transform-origin:0 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);width:100%;height:100%;padding:14px;gap:10px}
+.grid .c{background:#121a24;border:2px solid #2a3644;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:none}
+.grid img{height:100%;width:auto;max-width:100%;object-fit:cover}
+.black{background:#05080c;flex-direction:column;gap:14px}
+.black .t{font:700 34px ui-monospace,Menlo,monospace;color:#ffd24d}
+.black .s{font:600 17px ui-monospace,Menlo,monospace;color:#9fb0c3}
+.side{position:absolute;left:752px;top:24px;width:224px;height:525px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.step{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid #232d3a;border-radius:8px;font:700 17px ui-monospace,Menlo,monospace;color:#5d6b7c;background:#0f1620}
+.step b{width:26px;height:26px;background:#1a2431;color:#6f7e90;display:flex;align-items:center;justify-content:center;font-size:15px;border-radius:4px}
+.step.on{color:#f4ead2;border-color:#ffd24d;background:#1a1f24}
+.step.on b{background:#ffd24d;color:#1b1406}
+.bar{position:absolute;left:0;top:562px;width:1000px;height:58px;line-height:56px;text-align:center;white-space:pre;font:700 22px ui-monospace,Menlo,monospace;color:#f4ead2;border-top:2px solid #1c2531}
+.bar span{color:#ffd24d}
+</style>
+<div class="stage">
+ <div class="L" id="pet"><div class="herobox"><div></div></div></div>
+ <div class="L" id="work"><img src="../assets/features/work.png" width="700"></div>
+ <div class="L" id="grid"><div class="grid" id="g"></div></div>
+ <div class="L black" id="black"><div class="t" id="bt"></div><div class="s" id="bs"></div></div>
+ <div class="L" id="brk"><img src="../assets/features/break.png" width="700"></div>
+ <div class="L" id="todo"><img src="../assets/features/reminders.png" width="700"></div>
+ <div class="L" id="warn"><img src="../assets/features/warning.png" width="700"></div>
+ <div class="L" id="bed"><img src="../assets/features/bedtime.png" width="700"></div>
+</div>
+<div class="side" id="side"></div>
+<div class="bar" id="cap"></div>
+<script>
+const STEPS=["Desktop pet","Work timer","Forced rest","Todo board","Bedtime guard"];
+const NAMES=["coffee","keyboard","reading","stretch","meditation","tidy-desk","cheer-sign","fitness","nap","running","swimming","daydream"];
+const g=document.getElementById('g');
+NAMES.forEach(n=>{const c=document.createElement('div');c.className='c';c.innerHTML='<img src="../assets/states/'+n+'.png">';g.appendChild(c)});
+const $=id=>document.getElementById(id);
+function render(s){
+  for(const id of ['pet','work','grid','black','brk','todo','warn','bed']) $(id).style.opacity=(s.op&&s.op[id])||0;
+  [...g.children].forEach((c,i)=>c.style.visibility=i<(s.n??12)?'visible':'hidden');
+  $('bt').textContent=s.bt||''; $('bs').textContent=s.bs||'';
+  $('side').innerHTML=STEPS.map((t,i)=>'<div class="step'+(s.step==i+1?' on':'')+'"><b>'+(i+1)+'</b>'+t+'</div>').join('');
+  $('cap').innerHTML=s.cap||'';
+}
+render(JSON.parse(decodeURIComponent(location.hash.slice(1))));
+</script>

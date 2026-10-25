@@ -4,7 +4,7 @@
 
 **A pixel pet for your Mac desktop that combines a Pomodoro-style work/rest timer, an Apple Reminders board, and a bedtime guard: when it is time to stand up, or go to sleep, it takes over the screen.**
 
-![Clawd: pixel desktop companion, reminders board, work timer and bedtime guard](Docs/assets/clawd-hero.png)
+![Demo: the Clawd pixel pet on the desktop, a 30-minute work timer, 12 pixel work scenes, the forced-rest screen takeover, the Apple Reminders todo board and the bedtime guard](Docs/demo.gif)
 
 By risingjerry. Source-available under a non-commercial license (see [License](#license)).
 
@@ -33,6 +33,8 @@ cd clawd
 - **English and Chinese UI.**
 
 ## Screenshots
+
+![Clawd: pixel desktop companion, reminders board, work timer and bedtime guard](Docs/assets/clawd-hero.png)
 
 <table>
   <tr>
