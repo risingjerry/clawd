@@ -8,7 +8,7 @@ Clawd 是一个给 macOS 用的像素桌面伙伴。它把 Todo List、番茄钟
 
 直接下载最新 DMG：
 
-[下载 Clawd-0.1.0.dmg](https://github.com/JNHFlow21/clawd/releases/download/v0.1.0/Clawd-0.1.0.dmg)
+[下载 Clawd-0.1.0.dmg](https://github.com/risingjerry/clawd/releases/download/v0.1.0/Clawd-0.1.0.dmg)
 
 安装方式：
 
@@ -19,7 +19,7 @@ Clawd 是一个给 macOS 用的像素桌面伙伴。它把 Todo List、番茄钟
 
 备用下载页面：
 
-[GitHub Releases](https://github.com/JNHFlow21/clawd/releases/tag/v0.1.0)
+[GitHub Releases](https://github.com/risingjerry/clawd/releases/tag/v0.1.0)
 
 ## 它是什么
 
